@@ -1,7 +1,8 @@
+import "@reach/dialog/styles.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import App from "./app";
 
 ReactDOM.render(
   <React.StrictMode>
