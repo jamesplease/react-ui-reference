@@ -33,6 +33,16 @@ The UI elements in this repository should:
 - Menu
 - Tooltip
 
+## Understanding the Examples
+
+Each example project has a `vendor` folder. You should think of the files in this directory as being
+the code that would be installed into `node_modules` were this an npm package. The API of
+vendor files is intended to be as general as possible.
+
+Each example _also_ includes an `example_X.js` file, which is a wrapper for the file in vendor.
+This is the "app code" you would write around the npm package to customize the component for your
+app: things like custom styles, animations, and so on.
+
 ## Technical Details
 
 The heavy lifting in this examples is done by a collection of libraries created by the React community. You can think
