@@ -3,8 +3,8 @@
 Some common UI elements are quite difficult to implement correctly; one example are modals. This repository
 is a reference implementation of some of these more difficult UI elements.
 
-This is _not_ a UI component library that you can `npm install` and use in your application. They are examples
-that you can reference for creating _your own_ components.
+This is _not_ a UI component library that you can `npm install` and use in your application. Instead, this is a
+collection of example implementations that you can reference when creating _your own_ components.
 
 ## Goals
 
