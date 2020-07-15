@@ -13,7 +13,6 @@ export default function Dialog({
   onDismiss,
 
   showDialogBtnElement,
-  disableScroll = true,
 
   animation,
   animationDuration = 150,
@@ -100,7 +99,6 @@ export default function Dialog({
       style={{
         "--dialog-animation-duration": `${animationDuration}ms`,
       }}
-      dangerouslyBypassScrollLock={!disableScroll}
       isOpen={shouldMount}
       onDismiss={onDismiss}
     >
