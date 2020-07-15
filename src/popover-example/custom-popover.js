@@ -31,6 +31,7 @@ export default function CustomPopover({ referenceElement, active, onDismiss }) {
 
   return (
     <Popover
+      {/* For more, see: https://reach.tech/dialog/#labeling */}
       aria-label="Example Dialog"
       className="customPopover"
       overlayClassName="customPopover_overlay"
