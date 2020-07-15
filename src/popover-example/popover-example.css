@@ -1,3 +1,11 @@
 .popoverExample {
   padding: 10rem;
 }
+
+.openPopover {
+  border-radius: 10px;
+  height: 40px;
+  width: 150px;
+  outline: none;
+  border: 1px solid #aaa;
+}

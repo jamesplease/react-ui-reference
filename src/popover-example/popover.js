@@ -15,13 +15,13 @@ const Popover = forwardRef(
     {
       active,
       onDismiss,
-      style,
       refs,
       popperStyle,
       popperAttributes,
       placement,
       popperStuff,
-      animationDuration = 500,
+      animationDuration = 140,
+      children,
       ...otherProps
     },
     ref
@@ -35,6 +35,7 @@ const Popover = forwardRef(
     }
 
     const animation = useConstant(() => morph(animationDuration));
+
     const refsRef = useCurrentRef(refs);
     const previousRefs = usePrevious(refs);
     const previousRefsRef = useCurrentRef(previousRefs);
@@ -48,6 +49,7 @@ const Popover = forwardRef(
           overElRef: dudeToTransitionRef,
           overBoundingBox: refsRef.current.popperElement.getBoundingClientRect(),
           targetBoundingBox: refsRef.current.referenceElement.getBoundingClientRect(),
+          reduceMotion: false,
         });
       },
       onLeaving() {
@@ -55,6 +57,7 @@ const Popover = forwardRef(
           overElRef: dudeToTransitionRef,
           overBoundingBox: previousRefsRef.current.popperElement.getBoundingClientRect(),
           targetBoundingBox: previousRefsRef.current.referenceElement.getBoundingClientRect(),
+          reduceMotion: false,
         });
       },
     });
@@ -65,7 +68,12 @@ const Popover = forwardRef(
 
     return (
       <DialogOverlay
-        style={{ background: "rgba(0, 0, 0, 0.5)" }}
+        className={classnames("popover_overlay", {
+          "popover_overlay-active": useActiveClass,
+        })}
+        style={{
+          "--popover-animation-duration": `${animationDuration}ms`,
+        }}
         isOpen={shouldMount}
         onDismiss={onDismiss}
       >
@@ -81,19 +89,11 @@ const Popover = forwardRef(
           <DialogContent
             ref={dudeToTransitionRef}
             className={classnames("popover", {
-              [`popover-${placement}`]: true,
               "popover-active": useActiveClass,
             })}
-            style={{
-              ...style,
-              "--animationDuration": `${animationDuration}ms`,
-              width: "10rem",
-            }}
-            aria-label="Example Dialog"
             {...otherProps}
           >
-            <div>This is a popover.</div>
-            <button onClick={onDismiss}>Okay</button>
+            {children}
           </DialogContent>
         </div>
       </DialogOverlay>
