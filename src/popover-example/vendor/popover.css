@@ -1,0 +1,10 @@
+.popover {
+  /* Overriding Reach UI's styles */
+  margin: 0;
+  padding: 0;
+}
+
+.popover_overlay {
+  /* Overriding Reach UI's styles */
+  background: transparent;
+}
