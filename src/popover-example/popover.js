@@ -1,5 +1,6 @@
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, useRef, useState, useMemo } from "react";
 import classnames from "classnames";
+import { usePopper } from "react-popper";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 import {
   useMountTransition,
@@ -15,26 +16,39 @@ const Popover = forwardRef(
     {
       active,
       onDismiss,
-      refs,
-      popperStyle,
-      popperAttributes,
-      placement,
-      popperStuff,
       animationDuration = 140,
       children,
+      referenceElement,
       ...otherProps
     },
     ref
   ) => {
-    const nodeRef = useRef(null);
+    const [popperElement, setPopperElement] = useState(null);
+    const [arrowElement, setArrowElement] = useState(null);
+    const popperStuff = usePopper(referenceElement, popperElement, {
+      modifiers: [
+        { name: "arrow", options: { element: arrowElement } },
+        {
+          name: "offset",
+          options: {
+            offset: [0, 10],
+          },
+        },
+      ],
+    });
+
+    const { styles, attributes } = popperStuff;
+
     const dudeToTransitionRef = useRef(null);
 
-    function innerRef(node) {
-      nodeRef.current = node;
-      ref(node);
-    }
-
     const animation = useConstant(() => morph(animationDuration));
+
+    const refs = useMemo(() => {
+      return {
+        referenceElement,
+        popperElement,
+      };
+    }, [referenceElement, popperElement]);
 
     const refsRef = useCurrentRef(refs);
     const previousRefs = usePrevious(refs);
@@ -80,11 +94,11 @@ const Popover = forwardRef(
         {/* See: https://popper.js.org/docs/v2/faq/#how-do-i-add-css-transitions-without-disabling-adaptive */}
         <div
           className="popper-wrapper"
-          ref={innerRef}
+          ref={setPopperElement}
           style={{
-            ...popperStyle,
+            ...styles.popper,
           }}
-          {...popperAttributes}
+          {...attributes.popper}
         >
           <DialogContent
             ref={dudeToTransitionRef}
@@ -95,6 +109,11 @@ const Popover = forwardRef(
           >
             {children}
           </DialogContent>
+          <div
+            className="popover_arrow"
+            ref={setArrowElement}
+            style={styles.arrow}
+          />
         </div>
       </DialogOverlay>
     );

@@ -1,42 +1,17 @@
-import React, { useState, useMemo } from "react";
-import { usePopper } from "react-popper";
+import React, { useState } from "react";
 import "./popover-example.css";
 import Popover from "./popover";
 
 export default function PopoverExample() {
   const [showDialog, setShowDialog] = useState(false);
   const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  // const [arrowElement, setArrowElement] = useState(null);
-  const popperStuff = usePopper(referenceElement, popperElement, {
-    modifiers: [
-      // { name: "arrow", options: { element: arrowElement } }
-      {
-        name: "offset",
-        options: {
-          offset: [0, 10],
-        },
-      },
-    ],
-  });
-  const { styles, attributes } = popperStuff;
-
-  const open = () => setShowDialog(true);
-  const close = () => setShowDialog(false);
-
-  const refs = useMemo(() => {
-    return {
-      referenceElement,
-      popperElement,
-    };
-  }, [referenceElement, popperElement]);
 
   return (
     <div className="popoverExample">
       <button
         type="button"
         className="openPopover"
-        onClick={open}
+        onClick={() => setShowDialog(true)}
         ref={setReferenceElement}
       >
         Open Popover
@@ -44,20 +19,13 @@ export default function PopoverExample() {
 
       <Popover
         active={showDialog}
-        onDismiss={close}
-        ref={setPopperElement}
-        refs={refs}
-        popperStuff={popperStuff}
-        popperStyle={styles.popper}
+        onDismiss={() => setShowDialog(false)}
         aria-label="Example Dialog"
-        popperAttributes={attributes.popper}
-        placement={popperStuff.placement}
+        referenceElement={referenceElement}
       >
         <div>This is a popover dialog.</div>
         <br />
-        <button onClick={close}>Okay</button>
-        {/* Popper element
-        <div ref={setArrowElement} style={styles.arrow} /> */}
+        <button onClick={() => setShowDialog(false)}>Okay</button>
       </Popover>
     </div>
   );
