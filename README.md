@@ -1,10 +1,11 @@
 # UI Reference
 
-Some common UI elements are quite difficult to implement correctly; one example are modals. This repository
-is a reference implementation of some of these more difficult UI elements.
+Some common UI elements are intricate, which make them difficult to implement well. One example are modals. This
+repository is collection of reference implementations of some these common UI elements. All of the examples in
+this repository are written in React.
 
-This is _not_ a UI component library that you can `npm install` and use in your application. Instead, this is a
-collection of example implementations that you can reference when creating _your own_ components.
+This is _not_ a UI component library that you can `npm install` and use in your application. Instead, it's a
+collection of examples that you can reference when authoring _your own_ components.
 
 ## Goals
 
@@ -31,3 +32,12 @@ The UI elements in this repository should:
 - Alert
 - Menu
 - Tooltip
+
+## Technical Details
+
+The heavy lifting in this examples is done by a collection of libraries created by the React community. You can think
+of this repository as one way to combine these libraries to create the UI elements.
+
+- [Reach UI](https://reach.tech/) - A React component library focused on a11y
+- [React Popper](https://popper.js.org/react-popper/) - A positioning library for React
+- [Core Hooks](https://github.com/jamesplease/core-hooks) - A small collection of common React hooks
