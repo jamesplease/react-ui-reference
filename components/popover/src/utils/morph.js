@@ -27,9 +27,9 @@ export default function morph(time, reduceMotion = false) {
 
           const opacityCurve = reduceMotion
             ? "ease-in-out"
-            : "cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+            : "var(--weightedEase)";
 
-          overElRef.current.style.transition = `opacity ${time}ms ${opacityCurve}, transform ${time}ms cubic-bezier(0.175, 0.885, 0.32, 1.275)`;
+          overElRef.current.style.transition = `opacity ${time}ms ${opacityCurve}, transform ${time}ms var(--weightedEase)`;
           overElRef.current.style.opacity = 1;
           overElRef.current.style.transform = "none";
         });

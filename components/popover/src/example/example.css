@@ -1,8 +1,8 @@
-.popoverExample {
+.example {
   padding: 10rem;
 }
 
-.openPopover {
+.example_btn {
   border-radius: 10px;
   height: 40px;
   width: 150px;

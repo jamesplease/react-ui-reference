@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import "./popover-example.css";
+import "./example.css";
 import CustomPopover from "./custom-popover";
 
-export default function PopoverExample() {
+export default function Example() {
   const [showDialog, setShowDialog] = useState(false);
   const [referenceElement, setReferenceElement] = useState(null);
 
   return (
-    <div className="popoverExample">
+    <div className="example">
       <button
         type="button"
-        className="openPopover"
+        className="example_btn"
         onClick={() => setShowDialog(true)}
         ref={setReferenceElement}
       >
