@@ -25,10 +25,10 @@ The UI elements in this repository should:
 ## Examples
 
 - [Popover](./components/popover)
+- [Dialog](./components/dialog)
 
 #### Coming soon
 
-- Dialog
 - Alert
 - Menu
 - Tooltip
