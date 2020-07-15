@@ -27,3 +27,12 @@
 .customPopover_overlay.popover_overlay-active:before {
   opacity: 1;
 }
+
+.customPopover_arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-bottom: 5px solid black;
+}

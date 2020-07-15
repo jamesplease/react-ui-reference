@@ -2,7 +2,7 @@ import React, { useRef, useState, useMemo } from "react";
 import classnames from "classnames";
 import { usePopper } from "react-popper";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
-import { useMountTransition, useCurrentRef, usePrevious } from "core-hooks";
+import { useMountTransition, useCurrentRef } from "core-hooks";
 import "./popover.css";
 
 export default function Popover({
@@ -26,6 +26,7 @@ export default function Popover({
 
   popperOptions,
   arrowRef,
+  arrowProps,
 
   ...otherProps
 }) {
@@ -46,8 +47,6 @@ export default function Popover({
   }, [referenceElement, popperElement]);
 
   const popperElementsRef = useCurrentRef(popperElements);
-  const previousPopperElements = usePrevious(popperElements);
-  const previousPopperElementsRef = useCurrentRef(previousPopperElements);
 
   const callbackRefs = useCurrentRef({
     onEntering,
@@ -66,7 +65,6 @@ export default function Popover({
           overElRef: dialogElementRef,
           overBoundingBox: popperElementsRef.current.popperElement.getBoundingClientRect(),
           targetBoundingBox: popperElementsRef.current.referenceElement.getBoundingClientRect(),
-          reduceMotion: false,
         });
       }
 
@@ -78,9 +76,8 @@ export default function Popover({
       if (animation && typeof animation.exit === "function") {
         animation.exit({
           overElRef: dialogElementRef,
-          overBoundingBox: previousPopperElementsRef.current.popperElement.getBoundingClientRect(),
-          targetBoundingBox: previousPopperElementsRef.current.referenceElement.getBoundingClientRect(),
-          reduceMotion: false,
+          overBoundingBox: popperElementsRef.current.popperElement.getBoundingClientRect(),
+          targetBoundingBox: popperElementsRef.current.referenceElement.getBoundingClientRect(),
         });
       }
 
@@ -134,13 +131,9 @@ export default function Popover({
           })}
           {...otherProps}
         >
-          {children}
+          <div>{children}</div>
           {arrowRef && (
-            <div
-              className="popover_arrow"
-              ref={arrowRef}
-              style={styles.arrow}
-            />
+            <div {...arrowProps} ref={arrowRef} style={styles.arrow} />
           )}
         </DialogContent>
       </div>

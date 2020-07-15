@@ -1,7 +1,7 @@
-import React from "react";
-import { useConstant } from "core-hooks";
+import React, { useMemo } from "react";
 import Popover from "./vendor/popover";
 import "./custom-popover.css";
+import CustomPopoverBody from "./custom-popover-body";
 import morph from "../utils/morph";
 
 const ANIMATION_DURATION = 150;
@@ -22,7 +22,12 @@ export default function CustomPopover({ referenceElement, active, onDismiss }) {
     ],
   };
 
-  const animation = useConstant(() => morph(ANIMATION_DURATION));
+  // This could be set based on
+  const REDUCE_MOTION = true;
+
+  const animation = useMemo(() => morph(ANIMATION_DURATION, REDUCE_MOTION), [
+    REDUCE_MOTION,
+  ]);
 
   return (
     <Popover
@@ -36,10 +41,11 @@ export default function CustomPopover({ referenceElement, active, onDismiss }) {
       animationDuration={ANIMATION_DURATION}
       popperOptions={popperOptions}
       // arrowRef={setArrowElement}
+      // arrowProps={{
+      //   className: "customPopover_arrow",
+      // }}
     >
-      <div>This is a popover dialog.</div>
-      <br />
-      <button onClick={onDismiss}>Okay</button>
+      <CustomPopoverBody onDismiss={onDismiss} />
     </Popover>
   );
 }

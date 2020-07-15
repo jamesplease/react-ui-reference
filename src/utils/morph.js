@@ -1,11 +1,6 @@
-export default function morph(time) {
+export default function morph(time, reduceMotion = false) {
   return {
-    enter({
-      overElRef,
-      overBoundingBox,
-      targetBoundingBox,
-      reduceMotion = false,
-    }) {
+    enter({ overElRef, overBoundingBox, targetBoundingBox }) {
       if (!overElRef.current) {
         return;
       }
@@ -41,12 +36,7 @@ export default function morph(time) {
       });
     },
 
-    exit({
-      overElRef,
-      overBoundingBox,
-      targetBoundingBox,
-      reduceMotion = false,
-    }) {
+    exit({ overElRef, overBoundingBox, targetBoundingBox }) {
       if (!overElRef.current) {
         return;
       }
