@@ -1,0 +1,9 @@
+.example {
+  padding: 10rem;
+}
+
+.example_text {
+  height: 40px;
+  width: 150px;
+  background: #ccc;
+}
