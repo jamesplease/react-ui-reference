@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./popover-example.css";
-import Popover from "./popover";
+import CustomPopover from "./custom-popover";
 
 export default function PopoverExample() {
   const [showDialog, setShowDialog] = useState(false);
@@ -17,16 +17,11 @@ export default function PopoverExample() {
         Open Popover
       </button>
 
-      <Popover
+      <CustomPopover
+        referenceElement={referenceElement}
         active={showDialog}
         onDismiss={() => setShowDialog(false)}
-        aria-label="Example Dialog"
-        referenceElement={referenceElement}
-      >
-        <div>This is a popover dialog.</div>
-        <br />
-        <button onClick={() => setShowDialog(false)}>Okay</button>
-      </Popover>
+      />
     </div>
   );
 }
