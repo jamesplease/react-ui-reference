@@ -7,7 +7,10 @@ these things in your own app.
 
 ## Examples
 
-- **Popover**
+- [**Popover**](./components/popover)
+
+#### Coming soon
+
 - **Dialog**
 - **Alert**
 - **Menu**
