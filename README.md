@@ -1,6 +1,6 @@
-# UI Reference
+# React UI Reference
 
-Some common UI elements are intricate, which make them difficult to implement well. One example are modals. This
+Some common UI elements are intricate, which make them difficult to implement well. One example is a dialog. This
 repository is collection of reference implementations of some these common UI elements. All of the examples in
 this repository are written in React.
 
