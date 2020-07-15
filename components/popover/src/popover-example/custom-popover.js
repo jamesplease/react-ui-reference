@@ -22,8 +22,8 @@ export default function CustomPopover({ referenceElement, active, onDismiss }) {
     ],
   };
 
-  // This could be set based on
-  const REDUCE_MOTION = true;
+  // This could be set based on a media query
+  const REDUCE_MOTION = false;
 
   const animation = useMemo(() => morph(ANIMATION_DURATION, REDUCE_MOTION), [
     REDUCE_MOTION,
@@ -31,7 +31,7 @@ export default function CustomPopover({ referenceElement, active, onDismiss }) {
 
   return (
     <Popover
-      {/* For more, see: https://reach.tech/dialog/#labeling */}
+      // For more, see: https://reach.tech/dialog/#labeling
       aria-label="Example Dialog"
       className="customPopover"
       overlayClassName="customPopover_overlay"
