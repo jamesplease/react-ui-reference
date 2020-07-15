@@ -1,0 +1,11 @@
+.example {
+  padding: 10rem;
+}
+
+.example_btn {
+  border-radius: 10px;
+  height: 40px;
+  width: 150px;
+  outline: none;
+  border: 1px solid #aaa;
+}
