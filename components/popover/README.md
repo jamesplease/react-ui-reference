@@ -6,6 +6,13 @@ to another element on the page.
 The difference between a Popover and a Dialog is that the Dialog is always centered on the screen. Aside
 from that difference, the interaction design of both of these components is identical.
 
+## Running This Example
+
+1. Clone this repository
+2. Navigate into this directory
+3. Run `npm install`
+4. Run `npm start`
+
 ## Features
 
 These are the features of the Popover that come out-of-the-box

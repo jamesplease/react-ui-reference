@@ -7,11 +7,11 @@ these things in your own app.
 
 ## Examples
 
-- [**Popover**](./components/popover)
+- [Popover](./components/popover)
 
 #### Coming soon
 
-- **Dialog**
-- **Alert**
-- **Menu**
-- **Tooltip**
+- Dialog
+- Alert
+- Menu
+- Tooltip
