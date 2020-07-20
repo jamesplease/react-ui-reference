@@ -7,13 +7,15 @@ import "./tooltip.css";
 export default function Tooltip({
   children,
   className = "",
-  overlayClassName = "",
 
   active,
   onDismiss,
 
+  // Pass false and the tooltip will dismiss if a user attempts to hover it
+  allowHover = true,
+  displayTooltip,
+
   referenceElement,
-  disableScroll = true,
 
   animation,
   animationDuration = 150,
@@ -46,6 +48,7 @@ export default function Tooltip({
   }, [referenceElement, popperElement]);
 
   const popperElementsRef = useCurrentRef(popperElements);
+  const allowHoverRef = useCurrentRef(allowHover);
 
   const callbackRefs = useCurrentRef({
     onEntering,
@@ -116,6 +119,12 @@ export default function Tooltip({
         className={classnames(`tooltip ${className}`, {
           "tooltip-active": useActiveClass,
         })}
+        onMouseEnter={() => {
+          if (allowHoverRef.current) {
+            displayTooltip();
+          }
+        }}
+        onMouseOut={onDismiss}
         {...otherProps}
       >
         <div>{children}</div>

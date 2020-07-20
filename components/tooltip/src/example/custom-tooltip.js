@@ -6,7 +6,12 @@ import morph from "../utils/morph";
 
 const ANIMATION_DURATION = 150;
 
-export default function CustomTooltip({ referenceElement, active, onDismiss }) {
+export default function CustomTooltip({
+  referenceElement,
+  active,
+  onDismiss,
+  displayTooltip,
+}) {
   // const [arrowElement, setArrowElement] = useState(null);
 
   const popperOptions = {
@@ -31,16 +36,15 @@ export default function CustomTooltip({ referenceElement, active, onDismiss }) {
 
   return (
     <Tooltip
-      // For more, see: https://reach.tech/dialog/#labeling
-      aria-label="Example Dialog"
       className="customTooltip"
-      overlayClassName="customTooltip_overlay"
       active={active}
       onDismiss={onDismiss}
+      allowHover={true}
       referenceElement={referenceElement}
       animation={animation}
       animationDuration={ANIMATION_DURATION}
       popperOptions={popperOptions}
+      displayTooltip={displayTooltip}
       // arrowRef={setArrowElement}
       // arrowProps={{
       //   className: "customTooltip_arrow",
